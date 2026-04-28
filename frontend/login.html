@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MediAI — Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600;700;800&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+  --cream:    #FFF8F0;
+  --caramel:  #C08552;
+  --walnut:   #8C5A3C;
+  --espresso: #4B2E2B;
+  --bg:       #F5EDE0;
+  --bg2:      #EDE0CE;
+  --border:   rgba(140,90,60,0.18);
+  --border2:  rgba(140,90,60,0.32);
+  --text:     #3A2018;
+  --muted:    #8C6E5A;
+  --green:    #5A8A4A;
+  --red:      #C0392B;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Satoshi', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Decorative background circles */
+.bg-circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.bg-circle-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(192,133,82,0.12) 0%, transparent 70%);
+  top: -150px; left: -150px;
+}
+.bg-circle-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(140,90,60,0.1) 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+}
+.bg-circle-3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(75,46,43,0.06) 0%, transparent 70%);
+  top: 40%; left: 60%;
+}
+
+/* Decorative pattern */
+.bg-pattern {
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(192,133,82,0.08) 1px, transparent 0);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.container {
+  position: relative; z-index: 10;
+  width: 100%; max-width: 440px;
+  padding: 1.5rem;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.logo-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(192,133,82,0.3));
+}
+.logo h1 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--espresso);
+  letter-spacing: -0.5px;
+}
+.logo p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 0.3rem;
+}
+
+.card {
+  background: var(--cream);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(75,46,43,0.12), 0 2px 8px rgba(75,46,43,0.08);
+}
+
+.tabs {
+  display: flex;
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  gap: 4px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--muted);
+}
+.tab-btn.active {
+  background: var(--espresso);
+  color: var(--cream);
+  box-shadow: 0 2px 8px rgba(75,46,43,0.2);
+}
+
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--walnut);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: 'Satoshi', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--caramel);
+  box-shadow: 0 0 0 3px rgba(192,133,82,0.15);
+}
+.form-group input::placeholder { color: var(--muted); }
+
+.pass-wrap { position: relative; }
+.pass-wrap input { padding-right: 3rem; }
+.pass-toggle {
+  position: absolute; right: 1rem; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  color: var(--muted); cursor: pointer; font-size: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--espresso), var(--walnut));
+  color: var(--cream);
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(75,46,43,0.25);
+  letter-spacing: 0.3px;
+}
+.submit-btn:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(75,46,43,0.3); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.message {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+.message.error {
+  background: rgba(192,57,43,0.08);
+  border: 1px solid rgba(192,57,43,0.25);
+  color: var(--red);
+}
+.message.success {
+  background: rgba(90,138,74,0.08);
+  border: 1px solid rgba(90,138,74,0.25);
+  color: var(--green);
+}
+
+.card-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.card-footer a { color: var(--walnut); text-decoration: none; font-weight: 600; }
+.card-footer a:hover { color: var(--caramel); }
+
+.hint {
+  background: rgba(192,133,82,0.08);
+  border: 1px solid rgba(192,133,82,0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.hint strong { color: var(--walnut); }
+
+.divider {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin: 1rem 0; color: var(--muted); font-size: 0.8rem;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1;
+  height: 1px; background: var(--border2);
+}
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+<div class="bg-circle bg-circle-1"></div>
+<div class="bg-circle bg-circle-2"></div>
+<div class="bg-circle bg-circle-3"></div>
+
+<div class="container">
+  <div class="logo">
+    <span class="logo-icon">🧬</span>
+    <h1>MediAI</h1>
+    <p>Advanced Medical Diagnosis System</p>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="registerTab" onclick="switchTab('register')">Create Account</button>
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <!-- LOGIN -->
+    <div id="loginForm">
+      <div class="hint">
+        Default: <strong>admin</strong> / <strong>admin123</strong>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="login_username" placeholder="Enter your username" autocomplete="username"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="login_password" placeholder="Enter your password" autocomplete="current-password"/>
+          <button class="pass-toggle" onclick="togglePassword('login_password',this)" type="button">👁</button>
+        </div>
+      </div>
+      <button class="submit-btn" id="loginBtn" onclick="handleLogin()">Sign In →</button>
+      <div class="card-footer">
+        No account? <a href="javascript:void(0)" onclick="switchTab('register')">Create one</a>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="registerForm" style="display:none">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="reg_fullname" placeholder="e.g. Dr. John Smith"/>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="reg_username" placeholder="Choose a username"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="reg_password" placeholder="Min 6 characters"/>
+          <button class="pass-toggle" onclick="togglePassword('reg_password',this)" type="button">👁</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="reg_confirm" placeholder="Repeat your password"/>
+          <button class="pass-toggle" onclick="togglePassword('reg_confirm',this)" type="button">👁</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Role</label>
+        <select id="reg_role">
+          <option value="Doctor">Doctor</option>
+          <option value="Nurse">Nurse</option>
+          <option value="Radiologist">Radiologist</option>
+          <option value="Admin">Admin</option>
+          <option value="Researcher">Researcher</option>
+        </select>
+      </div>
+      <button class="submit-btn" id="registerBtn" onclick="handleRegister()">Create Account →</button>
+      <div class="card-footer">
+        Already have an account? <a href="javascript:void(0)" onclick="switchTab('login')">Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = localStorage.getItem('mediaiApiUrl') || 'http://127.0.0.1:5001';
+if (localStorage.getItem('mediai_user')) window.location.href = 'index.html';
+
+function switchTab(tab) {
+  document.getElementById('loginForm').style.display    = tab==='login'    ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = tab==='register' ? 'block' : 'none';
+  document.getElementById('loginTab').classList.toggle('active',    tab==='login');
+  document.getElementById('registerTab').classList.toggle('active', tab==='register');
+  hideMessage();
+}
+
+function togglePassword(id, btn) {
+  const input = document.getElementById(id);
+  if (input.type === 'password') { input.type='text'; btn.textContent='🙈'; }
+  else { input.type='password'; btn.textContent='👁'; }
+}
+
+function showMessage(msg, type) {
+  const el = document.getElementById('message');
+  el.textContent = msg;
+  el.className = `message ${type}`;
+  el.style.display = 'block';
+}
+function hideMessage() { document.getElementById('message').style.display='none'; }
+
+async function handleLogin() {
+  const username = document.getElementById('login_username').value.trim();
+  const password = document.getElementById('login_password').value.trim();
+  if (!username || !password) { showMessage('Please enter username and password', 'error'); return; }
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = 'Signing in...';
+  try {
+    const res = await fetch(`${API}/auth/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username, password }) });
+    const data = await res.json();
+    if (data.success) {
+      showMessage(`Welcome, ${data.full_name}! Redirecting...`, 'success');
+      localStorage.setItem('mediai_user', JSON.stringify({ username:data.username, full_name:data.full_name, role:data.role, token:data.token }));
+      setTimeout(() => { window.location.href = 'index.html'; }, 900);
+    } else {
+      showMessage(data.error || 'Login failed', 'error');
+      btn.disabled = false; btn.textContent = 'Sign In →';
+    }
+  } catch(err) {
+    showMessage('Cannot connect to backend. Make sure Flask is running on port 5001.', 'error');
+    btn.disabled = false; btn.textContent = 'Sign In →';
+  }
+}
+
+async function handleRegister() {
+  const full_name = document.getElementById('reg_fullname').value.trim();
+  const username  = document.getElementById('reg_username').value.trim();
+  const password  = document.getElementById('reg_password').value.trim();
+  const confirm   = document.getElementById('reg_confirm').value.trim();
+  const role      = document.getElementById('reg_role').value;
+  if (!full_name || !username || !password) { showMessage('All fields are required', 'error'); return; }
+  if (password !== confirm) { showMessage('Passwords do not match', 'error'); return; }
+  if (password.length < 6)  { showMessage('Password must be at least 6 characters', 'error'); return; }
+  const btn = document.getElementById('registerBtn');
+  btn.disabled = true; btn.textContent = 'Creating account...';
+  try {
+    const res = await fetch(`${API}/auth/register`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username, password, full_name, role }) });
+    const data = await res.json();
+    if (data.success) {
+      showMessage('Account created! You can now sign in.', 'success');
+      setTimeout(() => switchTab('login'), 1500);
+    } else {
+      showMessage(data.error || 'Registration failed', 'error');
+    }
+  } catch(err) {
+    showMessage('Cannot connect to backend.', 'error');
+  }
+  btn.disabled = false; btn.textContent = 'Create Account →';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    if (document.getElementById('loginForm').style.display !== 'none') handleLogin();
+    else handleRegister();
+  }
+});
+</script>
+</body>
+</html>
