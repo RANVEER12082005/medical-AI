@@ -1,14 +1,15 @@
-<img width="1440" height="810" alt="Screenshot 2026-04-28 at 2 42 49 PM" src="https://github.com/user-attachments/assets/1f59fb83-5629-401f-a72d-0c93130101ff" />🏥 MediAI — Intelligent Medical AI Assistant
+🏥 MediAI — Intelligent Medical AI Assistant
 An AI-powered healthcare web application that predicts potential medical conditions based on user symptoms using Machine Learning.
 
 OVERVIEW OF THE PROJECT:
+<img width="1440" height="810" alt="Screenshot 2026-04-28 at 2 42 49 PM" src="https://github.com/user-attachments/assets/1f59fb83-5629-401f-a72d-0c93130101ff" />
 <img width="1440" height="806" alt="Screenshot 2026-04-28 at 2 43 48 PM" src="https://github.com/user-attachments/assets/37209055-f285-43a1-a3ff-957f6da47e0c" />
 <img width="1440" height="805" alt="Screenshot 2026-04-28 at 2 43 41 PM" src="https://github.com/user-attachments/assets/25a440b1-a7f2-4470-9ec2-ba1a53ace225" />
 <img width="1440" height="811" alt="Screenshot 2026-04-28 at 2 43 33 PM" src="https://github.com/user-attachments/assets/3f675ed6-3344-431d-8f22-613b8acc5ee7" />
 <img width="1440" height="810" alt="Screenshot 2026-04-28 at 2 43 23 PM" src="https://github.com/user-attachments/assets/718f27f4-ee88-4ded-a14f-30247f4ceb44" />
 <img width="1440" height="812" alt="Screenshot 2026-04-28 at 2 43 16 PM" src="https://github.com/user-attachments/assets/104b0be6-3bde-4fb5-a315-76cc6926d595" />
 <img width="1440" height="810" alt="Screenshot 2026-04-28 at 2 43 07 PM" src="https://github.com/user-attachments/assets/8bb17608-6d74-4b5a-90c4-7bce65cca0ba" />
-<img width="1440" height="810" alt="Screenshot 2026-04-28 at 2 42 49 PM" src="https://github.com/user-attachments/assets/6207c84c-cfd5-4ce8-a46a-f0c61de1c0dc" />
+
 
 
 📌 Overview
@@ -53,41 +54,8 @@ ML Features
 🛠️ Tech Stack
 LayerTechnologyPurposeFrontendHTML5, CSS3, JavaScriptUser InterfaceBackendPython 3.10+, FlaskServer & APIML FrameworkScikit-learn / TensorFlowModel Training & InferenceAuthenticationFlask Sessions, JSONUser ManagementData StorageJSONUser DatabaseVersion ControlGit & GitHubCode Management
 
-📁 Project Structure
-MediAI/
-│
-├── 📂 backend/                  # Flask Backend
-│   ├── 📂 models/               # Data models & schemas
-│   ├── 📂 routes/               # API route handlers
-│   │   ├── auth_routes.py       # Authentication routes
-│   │   ├── prediction_routes.py # ML prediction routes
-│   │   └── user_routes.py       # User management routes
-│   ├── 📂 utils/                # Utility/helper functions
-│   │   ├── preprocessor.py      # Data preprocessing
-│   │   └── helpers.py           # General helpers
-│   ├── app.py                   # Main Flask application entry point
-│   └── auth.py                  # Authentication logic
-│
-├── 📂 frontend/                 # Frontend Interface
-│   ├── index.html               # Main/Home page
-│   ├── login.html               # Login & Register page
-│   ├── app.js                   # Frontend JavaScript logic
-│   └── style.css                # Global CSS styling
-│
-├── 📂 ml/                       # Machine Learning
-│   ├── 📂 data/                 # Training datasets (gitignored)
-│   ├── 📂 notebooks/            # Jupyter notebooks for EDA & training
-│   ├── 📂 trained_models/       # Saved ML models (gitignored)
-│   └── train_models.py          # Model training script
-│
-├── 📂 static/                   # Static Assets
-│   ├── 📂 css/                  # Stylesheets
-│   ├── 📂 js/                   # JavaScript files
-│   └── 📂 images/               # Images & icons
-│
-├── .gitignore                   # Git ignore rules
-├── requirements.txt             # Python dependencies
-└── README.md                    # Project documentation
+<img width="420" height="526" alt="image" src="https://github.com/user-attachments/assets/3022bc62-dd2d-45e6-87cb-a82bf4483f43" />
+
 
 ⚙️ Installation & Setup
 Prerequisites
